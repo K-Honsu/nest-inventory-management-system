@@ -21,6 +21,6 @@ export class AuthService {
     if (!isMatchedPassword) throw new UnauthorizedException("Invalid Email or Password")
     const token = this.jwtService.sign({ id: user.id, role: user.role })
     const userWithoutPassword = omit(user, 'password');
-    return { status: true, message: "Login successfully", user : userWithoutPassword, token }
+    return { status: true, message: "Login successfully", user: userWithoutPassword, token }
   }
 }

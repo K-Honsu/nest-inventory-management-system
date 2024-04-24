@@ -21,7 +21,11 @@ export class CategoryService {
   }
 
   async findAll(): Promise<{ category: object, status: boolean, message: string }> {
-    const data = await this.prisma.category.findMany()
+    const data = await this.prisma.category.findMany({
+      include : {
+        Item : true
+      }
+    })
     return { status: true, message: "Category List gotten", category: data }
   }
 
